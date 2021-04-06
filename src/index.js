@@ -194,26 +194,6 @@ class ParticleAnimation extends PureComponent {
       ctx.beginPath()
       ctx.ellipse(pi.x, pi.y, pi.radius / 10, pi.radius / 10, 0, 0, 2 * Math.PI)
       ctx.fill()
-
-      for (let j = i + 1; j < particles.length; ++j) {
-        const pj = particles[j]
-
-        if (pi.intersects(pj)) {
-          const dist = Math.sqrt(
-            (pi.x - pj.x) * (pi.x - pj.x) + (pi.y - pj.y) * (pi.y - pj.y)
-          )
-          const d = Math.max(0, Math.min(1, dist / 100.0))
-          const a = 20 * d + 150 * (1.0 - d)
-
-          ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${
-            (color.a * a) / (255.0 * 255.0)
-          })`
-          ctx.beginPath()
-          ctx.moveTo(pi.x, pi.y)
-          ctx.lineTo(pj.x, pj.y)
-          ctx.stroke()
-        }
-      }
     }
   }
 
